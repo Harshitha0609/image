@@ -17,4 +17,13 @@ var uploadImage = async (req,res)=>{
         console.log("error",error)
     }
 }
-module.exports = uploadImage
+var getAllImages = async(req,res)=>{
+    var allimages = await image.find()
+    res.status(201).json(allimages)
+}
+var getSingleImage = async (req,res)=>{
+    var id = req.params.id
+    var singleimage = await image.findById(id)
+    res.status(200).json(singleimage)
+}
+module.exports = {uploadImage,getAllImages,getSingleImage}
